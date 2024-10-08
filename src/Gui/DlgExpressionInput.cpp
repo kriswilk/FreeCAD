@@ -196,6 +196,9 @@ void DlgExpressionInput::initializeVarSets()
     ui->labelInfoActive->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     ui->labelInfoActive->setWordWrap(true);
 
+    ui->labelInfoActive->setVisible(false);
+    ui->labelInfo->setVisible(false);
+
     connect(ui->checkBoxVarSets, &QCheckBox::stateChanged,
             this, &DlgExpressionInput::onCheckVarSets);
     connect(ui->comboBoxVarSet, qOverload<int>(&QComboBox::currentIndexChanged),
@@ -402,6 +405,7 @@ void DlgExpressionInput::show()
     QDialog::show();
     this->activateWindow();
     ui->expression->selectAll();
+    ui->checkBoxVarSets->setChecked(false);
 }
 
 class Binding : public Gui::ExpressionBinding
